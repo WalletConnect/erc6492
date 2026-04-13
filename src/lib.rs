@@ -39,7 +39,7 @@ pub type RpcError = alloy::transports::RpcError<TransportErrorKind>;
 /// If the signature is invalid, it will return `Ok(Verification::Invalid)`.
 ///
 /// If an error occurs while making the RPC call, it will return `Err(RpcError)`.
-/// ```rust
+/// ```no_run
 /// # use alloy::primitives::eip191_hash_message;
 /// # use alloy::providers::ProviderBuilder;
 /// # use alloy::signers::{local::LocalSigner, SignerSync};
@@ -53,7 +53,7 @@ pub type RpcError = alloy::transports::RpcError<TransportErrorKind>;
 /// # let signature = account.sign_message_sync(message.as_bytes()).unwrap().as_bytes().into();
 /// # let address = account.address();
 /// #
-/// # let provider = ProviderBuilder::new().on_http("https://rpc.sepolia.org".parse().unwrap());
+/// # let provider = ProviderBuilder::new().connect_http("https://rpc.sepolia.org".parse().unwrap());
 /// let verification = verify_signature(signature, address, message_hash, &provider).await.unwrap();
 /// assert!(verification.is_valid());
 /// # }
