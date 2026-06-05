@@ -32,9 +32,9 @@ This crate uses [Alloy](https://github.com/alloy-rs) and requires an RPC provide
 let address = address!("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 let message = eip191_hash_message("Hello, world!");
 let signature = bytes!("aaaa");
-let provider = ReqwestProvider::<Ethereum>::new_http("https://rpc.example.com".parse().unwrap());
+let provider = ProviderBuilder::new().connect_http("https://rpc.example.com".parse().unwrap());
 
-let verification = verify_signature(signature, address, message, provider).await.unwrap();
+let verification = verify_signature(signature, address, message, &provider).await.unwrap();
 if verification.is_valid() {
     // signature valid
 }
